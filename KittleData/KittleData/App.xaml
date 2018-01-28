@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:KittleData.Converters"
              x:Class="KittleData.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +17,8 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+
+            <converters:NotConverter x:Key="NotConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

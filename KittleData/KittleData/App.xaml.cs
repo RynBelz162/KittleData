@@ -1,11 +1,9 @@
-﻿using System;
-
-using KittleData.Views;
+﻿using KittleData.Views;
 using Xamarin.Forms;
 
 namespace KittleData
 {
-	public partial class App : Application
+    public partial class App : Application
 	{
 
 		public App ()
@@ -13,7 +11,7 @@ namespace KittleData
 			InitializeComponent();
 
 
-            MainPage = new MainPage();
+            MainPage = new HomePage();
         }
 
 		protected override void OnStart ()
