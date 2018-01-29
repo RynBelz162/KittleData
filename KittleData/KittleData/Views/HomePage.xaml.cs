@@ -1,18 +1,15 @@
-﻿using KittleData.ViewModels;
-
-using Xamarin.Forms;
+﻿using KittleData.BaseClasses;
+using KittleData.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace KittleData.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : ContentPage
+	public partial class HomePage : ViewPage<HomePageVm>
 	{
-        private readonly HomePageVm _vm;
 		public HomePage ()
 		{
-            BindingContext = _vm = new HomePageVm();
-			InitializeComponent ();
+            InitializeComponent ();
 		}
 	}
 }

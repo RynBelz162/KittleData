@@ -1,12 +1,13 @@
-﻿using KittleData.Business.Models;
-using KittleData.Business.Services;
+﻿using KittleData.BaseClasses;
+using KittleData.Business.Interfaces;
+using KittleData.Business.Models;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace KittleData.ViewModels
 {
-    class HomePageVm : BaseViewModel
+    public class HomePageVm : BaseViewModel
     {
         private CatFact _catFact;
         public CatFact CatFact
@@ -21,10 +22,11 @@ namespace KittleData.ViewModels
 
         public ICommand RefreshFact { get; private set; }
 
-        private readonly FactService _factService;
-        public HomePageVm()
+        private readonly IFactService _factService;
+
+        public HomePageVm(IFactService factService)
         {
-            _factService = new FactService();
+            _factService = factService;
             RefreshFact = new Command(GetCatFact);
             GetCatFact();
         }

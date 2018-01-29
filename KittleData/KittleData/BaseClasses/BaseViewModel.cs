@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace KittleData.ViewModels
+namespace KittleData.BaseClasses
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
