@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace KittleData.ViewModels
 {
-    public class HomePageVm : BaseViewModel
+    public class RandomFactPageVm : BaseViewModel
     {
         private CatFact _catFact;
         public CatFact CatFact
@@ -24,7 +24,7 @@ namespace KittleData.ViewModels
 
         private readonly IFactService _factService;
 
-        public HomePageVm(IFactService factService)
+        public RandomFactPageVm(IFactService factService)
         {
             _factService = factService;
             RefreshFact = new Command(GetCatFact);

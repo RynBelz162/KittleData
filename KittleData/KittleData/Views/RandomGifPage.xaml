@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bc:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bc="clr-namespace:KittleData.BaseClasses"
+             xmlns:vm="clr-namespace:KittleData.ViewModels"
+             x:TypeArguments="vm:RandomGifPageVm"
+             x:Class="KittleData.Views.RandomGifPage">
+    <bc:ViewPage.Content>
+        <StackLayout>
+            <StackLayout IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <ActivityIndicator IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            </StackLayout>
+
+            <ScrollView Margin="15">
+                <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource NotConverter}}">
+                    <Image Source="{Binding CatGif}"/>
+                    <Label Text="Source" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToSource}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Button Text="Get Another!" Command="{Binding RefreshGif}"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </bc:ViewPage.Content>
+</bc:ViewPage>

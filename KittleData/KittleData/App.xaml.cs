@@ -8,36 +8,38 @@ using Xamarin.Forms;
 namespace KittleData
 {
     public partial class App : Application
-	{
+    {
         public static IContainer Container;
-		public App ()
-		{
+        public App()
+        {
             ResolveContainer();
-			InitializeComponent();
+            InitializeComponent();
             MainPage = new HomePage();
         }
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
 
         private void ResolveContainer()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<HomePageVm>().SingleInstance();
-            builder.RegisterType<FactService>().As<IFactService>().InstancePerLifetimeScope();
+            builder.RegisterType<RandomFactPageVm>().SingleInstance();
+            builder.RegisterType<RandomGifPageVm>().SingleInstance();
+            builder.RegisterType<FactService>().As<IFactService>().SingleInstance();
+            builder.RegisterType<GifService>().As<IGifService>().SingleInstance();
             Container = builder.Build();
         }
-	}
+    }
 }

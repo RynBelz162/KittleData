@@ -1,22 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<bc:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:bc="clr-namespace:KittleData.BaseClasses"
-             xmlns:vm="clr-namespace:KittleData.ViewModels"
-             x:TypeArguments="vm:HomePageVm"
+             xmlns:views="clr-namespace:KittleData.Views"
              x:Class="KittleData.Views.HomePage">
-    <bc:ViewPage.Content>
-        <StackLayout>
-            <StackLayout IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <ActivityIndicator IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-            </StackLayout>
-
-            <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource NotConverter}}">
-                <Label Text="Fact:"/>
-                <Label Text="{Binding CatFact.Fact}"/>
-
-                <Button Text="Get Another!" Command="{Binding RefreshFact}"/>
-            </StackLayout>
-        </StackLayout>
-    </bc:ViewPage.Content>
-</bc:ViewPage>
+    <views:RandomFactPage Title="Facts"/>
+    <views:RandomGifPage Title="GIFs"/>
+</TabbedPage>
