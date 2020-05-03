@@ -1,25 +1,15 @@
-﻿using KittleData.BaseClasses;
-using KittleData.Business.Interfaces;
+﻿using KittleData.Services;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
 using System;
-using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace KittleData.ViewModels
 {
     public class RandomGifPageVm : BaseViewModel
     {
-        private ImageSource _catGif;
-        public ImageSource CatGif
-        {
-            get => _catGif;
-            set
-            {
-                _catGif = value;
-                OnPropertyChanged();
-            }
-        }
-
         private Uri _source;
         public Uri Source
         {
@@ -34,29 +24,26 @@ namespace KittleData.ViewModels
         public ICommand GoToSource { get; private set; }
         public ICommand RefreshGif { get; private set; }
 
-        private readonly IGifService _gifService;
-        public RandomGifPageVm(IGifService gifService)
+        private readonly GifService _gifService;
+        public RandomGifPageVm()
         {
-            _gifService = gifService;
-            GoToSource = new Command(OpenSourcePage);
-            RefreshGif = new Command(GetRandomGif);
-            GetRandomGif();
+            _gifService = new GifService();
+            GoToSource = new AsyncCommand(OpenSourcePage);
+            RefreshGif = new AsyncCommand(GetRandomGif);
+            RefreshGif.Execute(null);
         }
 
-        private async void GetRandomGif()
+        private async Task GetRandomGif()
         {
             IsBusy = true;
 
             var model = await _gifService.GetRandomGif();
-            CatGif = ImageSource.FromStream(() => new MemoryStream(model.Gif));
             Source = model.SourceUrl;
 
             IsBusy = false;
         }
 
-        private void OpenSourcePage()
-        {
-            Device.OpenUri(Source);
-        }
+        private async Task OpenSourcePage() =>
+            await Launcher.OpenAsync(Source);
     }
 }

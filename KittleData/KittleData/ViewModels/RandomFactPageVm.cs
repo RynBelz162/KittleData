@@ -1,9 +1,10 @@
-﻿using KittleData.BaseClasses;
-using KittleData.Business.Interfaces;
-using KittleData.Business.Models;
+﻿using KittleData.Models;
+using KittleData.Services;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace KittleData.ViewModels
 {
@@ -22,16 +23,16 @@ namespace KittleData.ViewModels
 
         public ICommand RefreshFact { get; private set; }
 
-        private readonly IFactService _factService;
+        private readonly FactService _factService;
 
-        public RandomFactPageVm(IFactService factService)
+        public RandomFactPageVm()
         {
-            _factService = factService;
-            RefreshFact = new Command(GetCatFact);
-            GetCatFact();
+            _factService = new FactService();
+            RefreshFact = new AsyncCommand(GetCatFact);
+            RefreshFact.Execute(null);
         }
 
-        private async void GetCatFact()
+        private async Task GetCatFact()
         {
             IsBusy = true;
             var newFact = await _factService.GetRandomCatFact();

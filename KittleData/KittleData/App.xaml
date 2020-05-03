@@ -5,6 +5,10 @@
              x:Class="KittleData.App">
     <Application.Resources>
         <ResourceDictionary>
+            <x:String x:Key="Paw">&#xf03e9;</x:String>
+            <x:String x:Key="Gif">&#xf0d78;</x:String>
+            <x:String x:Key="OpenInNew">&#xf03cc;</x:String>
+
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
             <Color x:Key="Accent">#96d1ff</Color>
@@ -14,6 +18,11 @@
             <Color x:Key="LightTextColor">#999999</Color>
 
             <converters:NotConverter x:Key="NotConverter"/>
+
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons" />
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

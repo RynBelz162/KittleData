@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<bc:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:bc="clr-namespace:KittleData.BaseClasses"
-             xmlns:vm="clr-namespace:KittleData.ViewModels"
-             x:TypeArguments="vm:RandomGifPageVm"
-             x:Class="KittleData.Views.RandomGifPage">
-    <bc:ViewPage.Content>
+             x:Class="KittleData.Views.RandomGifPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             ios:Page.UseSafeArea="true"
+             Visual="Material"
+             Title="Gifs">
+    <ContentPage.Content>
         <StackLayout>
             <StackLayout IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <ActivityIndicator IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
@@ -13,8 +15,18 @@
 
             <ScrollView Margin="15">
                 <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource NotConverter}}">
-                    <Image Source="{Binding CatGif}"/>
-                    <Label Text="Source" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
+                    <ffimageloading:CachedImage
+                        HeightRequest="300"
+                        WidthRequest="300"
+                        Source="{Binding Source}"
+                        CacheDuration="1"/>
+                    <Label HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Source "/>
+                                <Span FontFamily="{DynamicResource MaterialFontFamily}" Text="{StaticResource OpenInNew}" />
+                            </FormattedString>
+                        </Label.FormattedText>
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToSource}"/>
                         </Label.GestureRecognizers>
@@ -24,5 +36,5 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-    </bc:ViewPage.Content>
-</bc:ViewPage>
+    </ContentPage.Content>
+</ContentPage>
