@@ -1,12 +1,11 @@
-﻿using KittleData.Business.Interfaces;
-using KittleData.Business.Models;
-using Newtonsoft.Json;
-using System.Net.Http;
+﻿using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
+using KittleData.Models;
 
-namespace KittleData.Business.Services
+namespace KittleData.Services
 {
-    public class FactService : IFactService
+    public class FactService
     {
         private const string url = "https://the-cat-fact.herokuapp.com/api/randomfact";
         public async Task<RandomCatFact> GetRandomCatFact()
@@ -16,7 +15,9 @@ namespace KittleData.Business.Services
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<RandomCatFact>(data);
+
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                return JsonSerializer.Deserialize<RandomCatFact>(data, options);
             }
             return new RandomCatFact();
         }

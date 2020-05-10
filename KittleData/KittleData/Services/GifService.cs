@@ -1,14 +1,13 @@
-﻿using KittleData.Business.Interfaces;
-using KittleData.Business.Models;
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using KittleData.Models;
 
-namespace KittleData.Business.Services
+namespace KittleData.Services
 {
-    public class GifService : IGifService
+    public class GifService
     {
-        private const string url = "http://thecatapi.com/api/images/get?type=gif";
+        private const string url = "https://thecatapi.com/api/images/get?type=gif";
         public async Task<RandomCatGif> GetRandomGif()
         {
             var httpClient = new HttpClient();

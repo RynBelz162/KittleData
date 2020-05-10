@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Lottie.Forms.Droid;
 
 namespace KittleData.Droid
 {
@@ -17,6 +18,7 @@ namespace KittleData.Droid
             Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.Forms.FormsMaterial.Init(this, bundle);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+            AnimationViewRenderer.Init();
             LoadApplication(new App());
         }
 

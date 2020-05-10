@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KittleData.Views.HomePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             ios:Page.UseSafeArea="true"
+             Visual="Material">
+    <ContentPage.Content>
+        <StackLayout Margin="15">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{StaticResource Paw}" VerticalOptions="Center" FontSize="Title" FontFamily="{DynamicResource MaterialFontFamily}"/>
+                <Label Text="Kittle Data" FontSize="Title" />
+            </StackLayout>
+
+            <pancakeview:PancakeView Padding="15" BackgroundColor="White" Elevation="2" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="{Binding CatFact.Fact}" />
+                    <Button Text="Another" Command="{Binding RefreshFact}"/>
+                </StackLayout>
+            </pancakeview:PancakeView>
+
+            <pancakeview:PancakeView Padding="15" BackgroundColor="White" Elevation="2" CornerRadius="10">
+                <StackLayout>
+                    <lottie:AnimationView IsVisible="{Binding IsBusy}" Animation="cats-spinner.json" Loop="True" AutoPlay="True" HeightRequest="250" />
+
+                    <forms:CachedImage IsVisible="{Binding IsBusy, Converter={StaticResource NotConverter}}"
+                                       HeightRequest="250"
+                                       Source="{Binding Source}"
+                                       CacheDuration="1"/>
+                    <Label HorizontalOptions="Center" IsEnabled="{Binding IsBusy, Converter={StaticResource NotConverter}}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Source " />
+                                <Span FontFamily="{DynamicResource MaterialFontFamily}" Text="{StaticResource OpenInNew}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToSource}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Button Text="Another" IsEnabled="{Binding IsBusy, Converter={StaticResource NotConverter}}" Command="{Binding RefreshGif}" />
+                </StackLayout>
+            </pancakeview:PancakeView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

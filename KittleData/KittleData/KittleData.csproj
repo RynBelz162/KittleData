@@ -12,20 +12,13 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.1-beta" />
+    <PackageReference Include="System.Text.Json" Version="4.7.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Views\RandomFactPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\RandomGifPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>

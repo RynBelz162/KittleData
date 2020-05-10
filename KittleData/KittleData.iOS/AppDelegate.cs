@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using UIKit;
 
 namespace KittleData.iOS
@@ -21,6 +22,7 @@ namespace KittleData.iOS
             Xamarin.Forms.Forms.Init();
             Xamarin.Forms.FormsMaterial.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            AnimationViewRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -52,17 +52,23 @@
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4" Version="1.0.0" />
     <PackageReference Include="Xamarin.AndroidX.CardView" Version="1.0.0" />
     <PackageReference Include="Xamarin.AndroidX.MediaRouter" Version="1.1.0" />
-  <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.5" />  <PackageReference Include="Xamarin.AndroidX.AppCompat.Resources">
+  <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.6" />  <PackageReference Include="Xamarin.AndroidX.AppCompat.Resources">
     <Version>1.1.0</Version>
   </PackageReference>
 <PackageReference Include="Xamarin.Essentials">
   <Version>1.5.3.1</Version>
 </PackageReference>
+<PackageReference Include="Xamarin.Forms.Visual.Material">
+  <Version>4.6.0.726</Version>
+</PackageReference>
+<PackageReference Include="Xamarin.Android.Support.Compat">
+  <Version>28.0.0.3</Version>
+</PackageReference>
 <PackageReference Include="Xamarin.FFImageLoading.Forms">
   <Version>2.4.11.982</Version>
 </PackageReference>
-<PackageReference Include="Xamarin.Forms.Visual.Material">
-  <Version>4.6.0.726</Version>
+<PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+  <Version>3.1.1</Version>
 </PackageReference>
 </ItemGroup>
   <ItemGroup>
@@ -101,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\materialdesignicons-webfont.ttf" />
+    <AndroidAsset Include="Assets\cats-spinner.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
